@@ -8,7 +8,7 @@ from time import sleep
 import requests.exceptions
 import logging
 
-from help_functions.dialog import FishSG, start_dialog
+from help_functions.dialog import FishSG, start_dialog, cart_dialog
 from help_functions.settings import SetEnv
 
 
@@ -38,7 +38,7 @@ def main():
 
     while True:
         try:
-            dp.include_router(start_dialog)
+            dp.include_routers(start_dialog, cart_dialog)
             setup_dialogs(dp)
             dp.run_polling(bot)
         except requests.exceptions.ReadTimeout:
